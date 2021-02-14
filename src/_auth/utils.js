@@ -8,6 +8,7 @@ async function getFacebookUserData(access_token) {
         "id",
         "email",
         "name",
+        "first_name",
         "friends",
         "gender",
         "location",

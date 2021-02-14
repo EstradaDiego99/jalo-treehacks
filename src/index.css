@@ -9,8 +9,20 @@ body {
   height: 100vh;
   min-height: 100vh;
   line-height: normal;
+  font-family: "Roboto";
 }
 
 main {
   height: calc(100vh - 56px);
+}
+
+a {
+  color: inherit;
+}
+
+a:hover,
+a:focus {
+  text-decoration: none;
+  outline: none;
+  color: inherit;
 }

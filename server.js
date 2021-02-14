@@ -22,6 +22,9 @@ mongoose
 const signUpRouter = require("./src/signup/_router");
 app.use("/api/signup", signUpRouter);
 
+const homeRouter = require("./src/home/_router");
+app.use("/api/home", homeRouter);
+
 const hangoutsRouter = require("./src/hangout/_router");
 app.use("/api/hangouts", hangoutsRouter);
 
