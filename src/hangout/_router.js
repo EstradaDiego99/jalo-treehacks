@@ -31,7 +31,17 @@ router.post("/", async (req, res) => {
   }
   const newHangout = new Hangout({ userID, title, place, date, description });
   await newHangout.save();
-  res.json({ newHangout, msg: "Evento creado satisfactoriamente" });
+  res.json({ newHangout, msg: "Hangout successfully created" });
+});
+
+router.put("/:hangoutID", async (req, res) => {
+  await Hangout.findByIdAndUpdate(req.params.hangoutID, req.body);
+  res.json("Hangout successfully updated");
+});
+
+router.delete("/:hangoutID", async (req, res) => {
+  await Hangout.findByIdAndDelete(req.params.hangoutID);
+  res.json("Hangout successfully removed");
 });
 
 module.exports = router;

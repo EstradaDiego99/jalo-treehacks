@@ -2,12 +2,18 @@ import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-export default function HangoutForm({ hangout = {}, formFunction }) {
+export default function HangoutForm({
+  hangout = {},
+  formFunction,
+  deleteHangout,
+}) {
   const [title, setTitle] = useState(hangout.title || "");
   const [errTitle, setErrTitle] = useState("");
   const [place, setPlace] = useState(hangout.place || "");
   const [errPlace, setErrPlace] = useState("");
-  const [date, setDate] = useState(hangout.date || new Date());
+  const [date, setDate] = useState(
+    hangout.date ? new Date(hangout.date) : new Date()
+  );
   const [errDate, setErrDate] = useState("");
   const [description, setDescription] = useState(hangout.description || "");
   const [errDescription, setErrDescription] = useState("");
@@ -100,9 +106,18 @@ export default function HangoutForm({ hangout = {}, formFunction }) {
         className="btn create-hangout"
         onClick={() => formFunction(functionMap)}
       >
-        <span className="flex-grow-1">Create Hangout</span>
+        <span className="flex-grow-1">
+          {deleteHangout ? "Update Hangout" : "Create Hangout"}
+        </span>
         <i className="material-icons">create</i>
       </div>
+
+      {deleteHangout && (
+        <div className="btn delete-hangout" onClick={() => deleteHangout()}>
+          <span className="flex-grow-1">Delete Hangout</span>
+          <i className="material-icons">delete</i>
+        </div>
+      )}
     </form>
   );
 }

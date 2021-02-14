@@ -62,6 +62,22 @@ textarea {
   width: auto;
 }
 
+.delete-hangout {
+  display: flex;
+  width: calc(100% - 16px);
+  margin: 8px;
+  margin-top: 0;
+  padding: 8px;
+  color: white;
+  background-color: var(--danger);
+}
+
+.delete-hangout i {
+  font-size: 1.5rem;
+  height: 1em;
+  width: auto;
+}
+
 .hangout-summary {
   margin: 4px;
   padding: 2px;

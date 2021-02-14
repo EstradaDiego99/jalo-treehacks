@@ -73,10 +73,12 @@ export default function HangoutShow() {
             )}
             {!ownHangout && <button>Jalo!!</button>}
           </div>
-          <div className="description mt-4">
-            <label className="font-weight-bold">Descripción</label>
-            <p className="pl-3">{description}</p>
-          </div>
+          {description && (
+            <div className="description mt-4">
+              <label className="font-weight-bold">Descripción</label>
+              <p className="pl-3">{description}</p>
+            </div>
+          )}
         </section>
       </main>
     </>

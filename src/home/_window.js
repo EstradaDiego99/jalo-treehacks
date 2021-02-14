@@ -41,7 +41,7 @@ export default function Home() {
       <Header userImg={user.picture.data.url} />
       <main>
         {!!ownHangouts.length && (
-          <section className="pt-2">
+          <section className="pt-4">
             <p className="mb-2">My pending hangouts:</p>
             {ownHangouts.map((h) => (
               <HangoutSummary {...{ hangout: h, ownHangout: true }} />
@@ -50,7 +50,7 @@ export default function Home() {
         )}
 
         {!!friendHangouts.length && (
-          <section className="mt-4">
+          <section className="pt-4">
             <p className="mb-2">My friend hangouts:</p>
             {friendHangouts.map((h) => (
               <HangoutSummary {...{ hangout: h }} />
@@ -58,7 +58,7 @@ export default function Home() {
           </section>
         )}
 
-        <a href="/hangout/new" className="btn new-hangout">
+        <a href="/hangouts/new" className="btn new-hangout">
           <span className="flex-grow-1">Propose Hangout</span>
           <i className="material-icons">create</i>
         </a>

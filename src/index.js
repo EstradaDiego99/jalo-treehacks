@@ -9,6 +9,7 @@ const FacebookCallback = lazy(() => import("./login/callback"));
 const Home = lazy(() => import("./home/_window"));
 const NewHangout = lazy(() => import("./hangout/new"));
 const ShowHangout = lazy(() => import("./hangout/show"));
+const EditHangout = lazy(() => import("./hangout/edit"));
 
 ReactDOM.render(
   <Router>
@@ -17,7 +18,12 @@ ReactDOM.render(
         <Switch>
           <Route exact path="/auth/facebook" component={FacebookCallback} />
           <Route exact path="/login" component={Login} />
-          <Route exact path="/hangout/new" component={NewHangout} />
+          <Route exact path="/hangouts/new" component={NewHangout} />
+          <Route
+            exact
+            path="/hangouts/:hangoutID/edit"
+            component={EditHangout}
+          />
           <Route exact path="/hangouts/:hangoutID" component={ShowHangout} />
           <Home exact path="/" component={Home} />
         </Switch>
