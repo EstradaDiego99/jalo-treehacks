@@ -1,6 +1,14 @@
 import "./_style.css";
+import jaloBlack from "../jalo-black.svg";
 
-export default function Header({ backButton, userImg, chatLink }) {
+export default function Header({
+  backButton,
+  middleSign,
+  showIcon,
+  peopleAmmount,
+  userImg,
+  chatLink,
+}) {
   return (
     <header>
       <div className="profile-pic">
@@ -12,7 +20,18 @@ export default function Header({ backButton, userImg, chatLink }) {
         {userImg && <img src={userImg} alt="profile-pic" />}
       </div>
       <div>
-        <span>JALO</span>
+        {showIcon && <img src={jaloBlack} alt="" style={{ height: "48px" }} />}
+        {middleSign && (
+          <div className="text-center chat-title">
+            <p className="m-0">{middleSign}</p>
+            {peopleAmmount && (
+              <div className="d-flex align-items-center with-icon">
+                <i className="material-icons text-secondary">person</i>
+                <p className="m-0">{peopleAmmount}</p>
+              </div>
+            )}
+          </div>
+        )}
       </div>
       <div style={{ width: "56px" }}>
         {chatLink && (

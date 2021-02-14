@@ -2,7 +2,6 @@ const router = require("express").Router();
 
 const Hangout = require("./_model");
 const User = require("../user/_model");
-const Chat = require("../chat/_model");
 const { getFacebookUserData } = require("../_auth/_utils");
 
 router.get("/:hangoutID", async (req, res) => {
@@ -48,8 +47,6 @@ router.post("/", async (req, res) => {
     assistants: [userID],
   });
   await newHangout.save();
-  const chat = new Chat({ hangout: newHangout._id });
-  await chat.save();
   res.json({
     newHangout,
     msg: "Hangout and corresponding chat successfully created",

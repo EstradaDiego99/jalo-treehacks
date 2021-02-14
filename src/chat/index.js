@@ -23,7 +23,7 @@ export default function ChatIndex() {
 
   return (
     <>
-      <Header backButton={true} />
+      <Header backButton={true} middleSign="Chats List" />
       <main className="d-flex flex-column">
         <section className="chat-container h-100">
           {chats.map((c) => (

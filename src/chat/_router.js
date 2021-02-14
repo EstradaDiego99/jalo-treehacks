@@ -1,17 +1,21 @@
 const router = require("express").Router();
 
-const Chat = require("./_model");
 const User = require("../user/_model");
 const Hangout = require("../hangout/_model");
+const { getFacebookUserData } = require("../_auth/_utils");
 
-router.get("/", async (req, res) => {
-  const chats = await Chat.find({});
-  res.json(chats);
-});
-
-router.get("/:chatID", async (req, res) => {
-  const chat = await Chat.findById(req.params.chatID);
-  res.json(chat);
+router.get("/:hangoutID", async (req, res) => {
+  const hangoutModel = await Hangout.findById(req.params.hangoutID);
+  const hangout = hangoutModel.toObject();
+  const assistantsArr = [];
+  for (const assistant of hangout.assistants) {
+    const { access_token } = await User.findOne({ id: assistant });
+    assistantsArr.push(
+      await getFacebookUserData(access_token, ["name", "picture"])
+    );
+  }
+  hangout.assistantsArr = assistantsArr;
+  res.json(hangout);
 });
 
 router.post("/chat-query", async (req, res) => {

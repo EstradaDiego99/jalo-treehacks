@@ -7,6 +7,10 @@ header {
   text-align: center;
 }
 
+header > .profile-pic {
+  cursor: pointer;
+}
+
 header > .profile-pic > i {
   font-size: 2.5em;
   margin: 4px;
@@ -15,4 +19,9 @@ header > .profile-pic > i {
 header > .profile-pic > img {
   border-radius: 50%;
   margin: 2px;
+}
+
+.chat-title > div {
+  width: fit-content;
+  margin: 0 auto;
 }

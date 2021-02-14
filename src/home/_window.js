@@ -35,11 +35,11 @@ export default function Home() {
 
   return (
     <>
-      <Header userImg={user.picture.data.url} chatLink={`/chats`} />
+      <Header userImg={user.picture.data.url} showIcon chatLink={`/chats`} />
       <main>
         {!!ownHangouts.length && (
           <section className="pt-4">
-            <p className="mb-2">My pending hangouts:</p>
+            <label className="hangouts-label">My pending hangouts:</label>
             {ownHangouts.map((h) => (
               <HangoutSummary
                 {...{ hangout: h, ownHangout: true, loggedUser: user }}
@@ -51,7 +51,7 @@ export default function Home() {
 
         {!!friendHangouts.length && (
           <section className="pt-4">
-            <p className="mb-2">My friend hangouts:</p>
+            <label className="hangouts-label">My friend hangouts:</label>
             {friendHangouts.map((h) => (
               <HangoutSummary
                 {...{ hangout: h, loggedUser: user }}

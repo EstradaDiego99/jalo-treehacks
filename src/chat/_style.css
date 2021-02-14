@@ -21,3 +21,38 @@
   font-size: 3em;
   color: var(--secondary) !important;
 }
+
+.chat-display .text-box {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+  display: flex;
+  padding: 4px;
+  background-color: var(--background-regular);
+}
+
+.text-box input {
+  border: none;
+  flex-grow: 1;
+  border-radius: 8px;
+}
+
+.text-box button {
+  background-color: transparent;
+  border: none;
+}
+
+.assistants-container {
+  margin: 0.5em;
+  padding: 0.5em;
+  text-align: center;
+  border-bottom: solid 4px;
+  opacity: 0.5;
+  font-style: italic;
+}
+
+.assistants-container > p {
+  margin: 0;
+  margin-bottom: 0.25em;
+}

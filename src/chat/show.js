@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { login } from "../_auth/utils";
-import moment from "moment";
 import { backendURL } from "../utils/globals";
 import "./_style.css";
 
@@ -14,6 +13,7 @@ export default function ChatShow() {
   const { chatID } = useParams();
   useEffect(() => {
     async function getChat() {
+      await login().catch(() => (window.location = "/login"));
       const { data } = await axios.get(`${backendURL}/chats/${chatID}`);
       setChat(data);
     }
@@ -24,12 +24,29 @@ export default function ChatShow() {
     return <></>;
   }
 
-  console.log(chat);
+  const { assistantsArr } = chat;
 
   return (
     <>
-      <Header backButton={true} />
-      <main className="pt-4 d-flex flex-column"></main>
+      <Header
+        backButton={true}
+        middleSign={chat.title}
+        peopleAmmount={chat.assistants.length}
+      />
+      <main className="d-flex flex-column chat-display">
+        <div className="assistants-container">
+          <p>Participants:</p>
+          {assistantsArr.map((a) => (
+            <p className="participant" key={a.id}>
+              {a.name}
+            </p>
+          ))}
+        </div>
+        <footer className="text-box">
+          <input placeholder="Type something to arrange plans!!" />
+          <button className="material-icons">send</button>
+        </footer>
+      </main>
     </>
   );
 }

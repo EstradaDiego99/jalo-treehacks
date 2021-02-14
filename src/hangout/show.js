@@ -6,6 +6,9 @@ import moment from "moment";
 import { backendURL } from "../utils/globals";
 import "./_style.css";
 
+import jaloBlack from "../jalo-black.svg";
+import jaloSuccess from "../jalo-success.svg";
+
 import Header from "../_header/_component";
 
 export default function HangoutShow() {
@@ -59,9 +62,11 @@ export default function HangoutShow() {
   const loggedUserAssisting = assistants.indexOf(loggedUser.id) !== -1;
   const ownHangout = loggedUser && loggedUser.id === hangoutUser.id;
 
+  const chatLink = loggedUserAssisting ? `/chats/${hangoutID}` : undefined;
+
   return (
     <>
-      <Header backButton={true} chatLink={`/chats/${hangoutID}`} />
+      <Header backButton={true} chatLink={chatLink} />
 
       <main className="pt-4 d-flex flex-column">
         <section className="hangout-info">
@@ -99,13 +104,19 @@ export default function HangoutShow() {
             {!ownHangout && (
               <>
                 {loggedUserAssisting ? (
-                  <button className="jalo activated" onClick={unmarkAssistance}>
-                    Jalo!!
-                  </button>
+                  <img
+                    src={jaloSuccess}
+                    className="jalo"
+                    onClick={unmarkAssistance}
+                    alt=""
+                  />
                 ) : (
-                  <button className="jalo" onClick={markAssistance}>
-                    Jalo!!
-                  </button>
+                  <img
+                    src={jaloBlack}
+                    className="jalo off"
+                    onClick={markAssistance}
+                    alt=""
+                  />
                 )}
               </>
             )}

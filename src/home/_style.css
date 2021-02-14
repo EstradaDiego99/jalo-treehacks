@@ -16,3 +16,10 @@
   height: 1em;
   width: auto;
 }
+
+.hangouts-label {
+  font-weight: bold;
+  margin-bottom: 0.25em;
+  text-align: center;
+  width: 100%;
+}
