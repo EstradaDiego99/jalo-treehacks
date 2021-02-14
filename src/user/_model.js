@@ -4,6 +4,7 @@ const User = model(
   "User",
   new Schema({
     id: { type: Number, required: true },
+    access_token: { type: String, required: true },
   })
 );
 

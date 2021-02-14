@@ -38,12 +38,18 @@ router.route("/").post(async (req, res) => {
       access_token,
     },
   });
-  const newUser = new User({ id, access_token });
-
-  newUser
-    .save()
-    .then(() => res.json({ access_token, msg: "New User registered!!" }))
-    .catch((err) => res.status(400).json({ err, msg: "Unexpected Error" }));
+  let user = await User.find({ id });
+  if (user) {
+    User.findOneAndUpdate({ id }, { access_token })
+      .then(() => res.json({ access_token, msg: "User token updated" }))
+      .catch((err) => res.status(400).json({ err, msg: "Unexpected Error" }));
+  } else {
+    user = new User({ id, access_token });
+    user
+      .save()
+      .then(() => res.json({ access_token, msg: "New User registered!!" }))
+      .catch((err) => res.status(400).json({ err, msg: "Unexpected Error" }));
+  }
 });
 
 module.exports = router;

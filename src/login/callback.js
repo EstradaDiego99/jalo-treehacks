@@ -13,10 +13,10 @@ export default function FacebookCallback() {
     axios
       .post(`${backendURL}/signup`, { code })
       .then((res) => {
-        console.log(res);
-        const { access_token } = res.data;
-        console.log(access_token);
+        const { access_token, msg } = res.data;
         saveToken(access_token);
+        alert(msg);
+        window.location = "/";
       })
       .catch(() => alert("Unexpected error"));
   }, []);

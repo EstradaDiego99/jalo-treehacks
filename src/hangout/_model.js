@@ -7,7 +7,8 @@ const Hangout = model(
     title: { type: String, required: true },
     place: { type: String, required: true },
     date: { type: Date, required: true },
-    description: { type: String, required: true },
+    description: { type: String, required: false },
+    user: { type: Object, required: true },
   })
 );
 

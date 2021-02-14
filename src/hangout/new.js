@@ -34,6 +34,7 @@ export default function NewHangout() {
         place,
         date,
         description,
+        user,
       })
       .then((res) => {
         window.location = "/";
