@@ -106,10 +106,17 @@ export default function HangoutForm({
         className="btn create-hangout"
         onClick={() => formFunction(functionMap)}
       >
-        <span className="flex-grow-1">
-          {deleteHangout ? "Update Hangout" : "Create Hangout"}
-        </span>
-        <i className="material-icons">create</i>
+        {deleteHangout ? (
+          <>
+            <span className="flex-grow-1">Update Hangout</span>
+            <i className="material-icons">save</i>
+          </>
+        ) : (
+          <>
+            <span className="flex-grow-1">Create Hangout</span>
+            <i className="material-icons">create</i>
+          </>
+        )}
       </div>
 
       {deleteHangout && (

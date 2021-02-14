@@ -23,6 +23,7 @@ router.post("/hangouts-query", async (req, res) => {
   const ownHangouts = [];
   const ownHangoutsModel = await Hangout.find({ userID: user.id });
   ownHangoutsModel.forEach(async (h) => {
+    if (h.date < new Date()) return;
     const hangout = h.toObject();
     hangout.user = await getFacebookUserData(access_token);
     ownHangouts.push(hangout);

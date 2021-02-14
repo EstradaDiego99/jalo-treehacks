@@ -88,8 +88,11 @@ export default function HangoutShow() {
               </div>
             </div>
             {ownHangout && (
-              <a href={`/hangouts/${hangoutID}/edit`} className="edit-hangout">
-                Editar!!
+              <a
+                href={`/hangouts/${hangoutID}/edit`}
+                className="edit-hangout material-icons"
+              >
+                create
               </a>
             )}
             {!ownHangout && (

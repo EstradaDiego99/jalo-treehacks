@@ -104,10 +104,11 @@ textarea {
   background-color: var(--background-regular);
   width: fit-content;
   border-radius: 4px;
+  font-style: italic;
 }
 
 .hangout-summary .title {
-  font-size: 1.5em;
+  font-size: 1.4em;
 }
 
 .hangout-summary i {
@@ -147,6 +148,7 @@ textarea {
 .edit-hangout {
   width: 56px;
   height: 56px;
+  font-size: 3.5em;
 }
 
 .organizer img {
