@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const axios = require("axios");
+const { redirectUriBase } = require("../utils/_globals");
 
 require("dotenv").config();
 
@@ -11,7 +12,7 @@ async function getAccessTokenFromCode(code) {
       params: {
         client_id: process.env.FACEBOOK_APP_ID,
         client_secret: process.env.FACEBOOK_APP_SECRET,
-        redirect_uri: "http://localhost:3000/auth/facebook",
+        redirect_uri: `${redirectUriBase}/auth/facebook`,
         code,
       },
     })

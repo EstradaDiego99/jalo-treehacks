@@ -3,7 +3,12 @@
  */
 const backendURL =
   process.env.NODE_ENV === "production"
-    ? "https://devdiegoest-template.herokuapp.com/api"
+    ? "https://jalo-treehacks.herokuapp.com/api"
     : "http://localhost:5000/api";
 
-export { backendURL };
+const redirectUriBase =
+  process.env.NODE_ENV === "production"
+    ? "https://jalo-treehacks.herokuapp.com"
+    : "http://localhost:3000";
+
+export { backendURL, redirectUriBase };

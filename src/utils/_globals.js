@@ -11,4 +11,4 @@ const redirectUriBase =
     ? "https://jalo-treehacks.herokuapp.com"
     : "http://localhost:3000";
 
-export { backendURL, redirectUriBase };
+module.exports = { backendURL, redirectUriBase };

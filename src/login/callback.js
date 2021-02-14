@@ -3,7 +3,7 @@ import queryString from "query-string";
 import "../index.css";
 import axios from "axios";
 
-import { backendURL } from "../globals";
+import { backendURL } from "../utils/globals";
 import { saveToken } from "../_auth/utils";
 
 export default function FacebookCallback() {
