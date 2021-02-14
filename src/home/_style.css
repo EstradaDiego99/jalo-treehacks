@@ -8,6 +8,7 @@
   font-size: 1.5em;
   color: rgba(0, 0, 0, 0.75);
   background-color: #bfb383;
+  max-width: calc(480px - 16px);
 }
 
 .new-hangout i {
