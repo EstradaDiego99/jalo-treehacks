@@ -42,6 +42,7 @@ export default function ChatShow() {
             </p>
           ))}
         </div>
+        <div className="chat-container"></div>
         <footer className="text-box">
           <input placeholder="Type something to arrange plans!!" />
           <button className="material-icons">send</button>
