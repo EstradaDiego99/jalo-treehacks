@@ -61,7 +61,8 @@ export default function HangoutShow() {
 
   return (
     <>
-      <Header backButton={true} />
+      <Header backButton={true} chatLink={`/chats/${hangoutID}`} />
+
       <main className="pt-4 d-flex flex-column">
         <section className="hangout-info">
           <div className="title mb-3">
@@ -119,7 +120,7 @@ export default function HangoutShow() {
 
         <div className="flex-grow-1"></div>
 
-        {assistantsArr.length && (
+        {!!assistantsArr.length && (
           <section className="assistants-container">
             <label className="m-0">Assistants:</label>
             {assistantsArr.map((a) => (

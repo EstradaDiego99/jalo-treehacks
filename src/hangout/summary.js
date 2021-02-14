@@ -1,19 +1,22 @@
 import "./_style.css";
 import moment from "moment";
 
-export default function HangoutSummary({ hangout, ownHangout }) {
+export default function HangoutSummary({ hangout, ownHangout, loggedUser }) {
   const { _id, title, place, date, user, assistants } = hangout;
   const { first_name } = user;
   const picUrl = user.picture.data.url;
 
+  const assisting = assistants.indexOf(loggedUser.id) !== -1;
+
   return (
-    <figure className="hangout-summary">
+    <figure className={`hangout-summary${assisting ? " assisting" : ""}`}>
       <a href={`/hangouts/${_id}`}>
         <div className="flex-grow-1 event-info">
           <p className="date">{moment(date).format("dddd, MMMM D. h:mm a")}</p>
           <div style={{ height: "3.25em" }}>
             <p className="title pl-2">{title}</p>
           </div>
+
           <div className="d-flex">
             <div className="d-flex align-items-center with-icon pl-2 flex-grow-1">
               <i className="material-icons text-secondary">room</i>
@@ -22,7 +25,7 @@ export default function HangoutSummary({ hangout, ownHangout }) {
 
             <div className="d-flex align-items-center with-icon pl-2">
               <i className="material-icons text-secondary">person</i>
-              <p>{assistants.length + 1}</p>
+              <p>{assistants.length}</p>
             </div>
           </div>
         </div>

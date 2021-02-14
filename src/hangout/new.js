@@ -35,8 +35,9 @@ export default function NewHangout() {
         date,
         description,
       })
-      .then((res) => {
-        window.location = "/";
+      .then(({ data }) => {
+        const { newHangout } = data;
+        window.location = `/hangouts/${newHangout._id}`;
       })
       .catch(({ response: { data: { errors = {} } = {} } = {} }) => {
         for (const err in errors) errorFunctions[err](errors[err]);

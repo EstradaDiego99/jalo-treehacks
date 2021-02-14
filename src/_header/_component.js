@@ -1,6 +1,6 @@
 import "./_style.css";
 
-export default function Header({ backButton, userImg }) {
+export default function Header({ backButton, userImg, chatLink }) {
   return (
     <header>
       <div className="profile-pic">
@@ -14,7 +14,18 @@ export default function Header({ backButton, userImg }) {
       <div>
         <span>JALO</span>
       </div>
-      <div style={{ width: "56px" }}></div>
+      <div style={{ width: "56px" }}>
+        {chatLink && (
+          <a href={chatLink} alt="chat">
+            <i
+              className="material-icons"
+              onClick={() => (window.location = "/")}
+            >
+              mode_comment
+            </i>
+          </a>
+        )}
+      </div>
     </header>
   );
 }

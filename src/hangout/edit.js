@@ -18,9 +18,9 @@ export default function EditHangout() {
         () => (window.location = "/login")
       );
       const { data } = await axios.get(`${backendURL}/hangouts/${hangoutID}`);
-      if (String(data.userID) !== String(loggedUser.id)) {
+      if (String(data.userID) !== String(loggedUser.id))
         window.location = "/login";
-      }
+
       setHangout(data);
     }
     getHangout();
@@ -40,8 +40,8 @@ export default function EditHangout() {
         date,
         description,
       })
-      .then((res) => {
-        window.location = "/";
+      .then((_) => {
+        window.location = `/hangouts/${hangoutID}`;
       })
       .catch(({ response: { data: { errors = {} } = {} } = {} }) => {
         for (const err in errors) errorFunctions[err](errors[err]);

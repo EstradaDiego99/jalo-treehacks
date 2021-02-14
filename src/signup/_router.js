@@ -38,7 +38,7 @@ router.route("/").post(async (req, res) => {
       access_token,
     },
   });
-  let user = await User.find({ id });
+  let user = await User.findOne({ id });
   if (user) {
     User.findOneAndUpdate({ id }, { access_token })
       .then(() => res.json({ access_token, msg: "User token updated" }))

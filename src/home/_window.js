@@ -33,19 +33,16 @@ export default function Home() {
     return <></>;
   }
 
-  console.log(ownHangouts);
-  console.log(friendHangouts);
-
   return (
     <>
-      <Header userImg={user.picture.data.url} />
+      <Header userImg={user.picture.data.url} chatLink={`/chats`} />
       <main>
         {!!ownHangouts.length && (
           <section className="pt-4">
             <p className="mb-2">My pending hangouts:</p>
             {ownHangouts.map((h) => (
               <HangoutSummary
-                {...{ hangout: h, ownHangout: true }}
+                {...{ hangout: h, ownHangout: true, loggedUser: user }}
                 key={h._id}
               />
             ))}
@@ -56,7 +53,10 @@ export default function Home() {
           <section className="pt-4">
             <p className="mb-2">My friend hangouts:</p>
             {friendHangouts.map((h) => (
-              <HangoutSummary {...{ hangout: h }} key={h._id} />
+              <HangoutSummary
+                {...{ hangout: h, loggedUser: user }}
+                key={h._id}
+              />
             ))}
           </section>
         )}

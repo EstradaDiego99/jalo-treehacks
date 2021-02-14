@@ -10,6 +10,8 @@ const Home = lazy(() => import("./home/_window"));
 const NewHangout = lazy(() => import("./hangout/new"));
 const ShowHangout = lazy(() => import("./hangout/show"));
 const EditHangout = lazy(() => import("./hangout/edit"));
+const ChatIndex = lazy(() => import("./chat/index"));
+const ChatShow = lazy(() => import("./chat/show"));
 
 ReactDOM.render(
   <Router>
@@ -25,6 +27,8 @@ ReactDOM.render(
             component={EditHangout}
           />
           <Route exact path="/hangouts/:hangoutID" component={ShowHangout} />
+          <Route exact path="/chats" component={ChatIndex} />
+          <Route exact path="/chats/:chatID" component={ChatShow} />
           <Home exact path="/" component={Home} />
         </Switch>
       </Suspense>

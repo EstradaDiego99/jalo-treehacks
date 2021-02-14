@@ -23,7 +23,6 @@ router.post("/hangouts-query", async (req, res) => {
   const ownHangouts = [];
   const ownHangoutsModel = await Hangout.find({ userID: user.id });
   ownHangoutsModel.forEach(async (h) => {
-    if (h.date < new Date()) return;
     const hangout = h.toObject();
     hangout.user = await getFacebookUserData(access_token);
     ownHangouts.push(hangout);
@@ -52,7 +51,10 @@ router.post("/hangouts-query", async (req, res) => {
   await Promise.all(promises);
   ownHangouts.sort((a, b) => (a.date > b.date ? 1 : -1));
   friendHangouts.sort((a, b) => (a.date > b.date ? 1 : -1));
-  res.json({ ownHangouts, friendHangouts });
+  res.json({
+    ownHangouts: ownHangouts.filter((h) => new Date(h.date) > new Date()),
+    friendHangouts: friendHangouts.filter((h) => new Date(h.date) > new Date()),
+  });
 });
 
 module.exports = router;
