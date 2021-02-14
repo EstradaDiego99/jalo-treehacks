@@ -1,5 +1,7 @@
 import queryString from "query-string";
-import "../index.css";
+import "./_style.css";
+import jaloBlack from "../jalo-black.svg";
+import loginFacebook from "../login-facebook.png";
 
 const stringifiedParams = queryString.stringify({
   client_id: 3839028159468589,
@@ -13,8 +15,17 @@ const facebookLoginUrl = `https://www.facebook.com/v9.0/dialog/oauth?${stringifi
 
 export default function Login() {
   return (
-    <main>
-      <a href={facebookLoginUrl}>Login with facebook</a>
+    <main id="login" className="d-flex flex-column align-items-center">
+      <img src={jaloBlack} alt="main-logo" className="main-logo m-5" />
+      <p style={{ fontSize: "2em" }}>Welcome to Jalo!!</p>
+      <p className="m-3">
+        The platform that helps you gather more easily with your friends!!
+      </p>
+
+      <div className="flex-grow-1"></div>
+      <a href={facebookLoginUrl} className="login-btn m-3">
+        <img src={loginFacebook} alt="login-with-facebook" />
+      </a>
     </main>
   );
 }

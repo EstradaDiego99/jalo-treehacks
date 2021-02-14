@@ -16,7 +16,7 @@ header > .profile-pic > i {
   margin: 4px;
 }
 
-header > .profile-pic > img {
+header > .profile-pic img {
   border-radius: 50%;
   margin: 2px;
 }

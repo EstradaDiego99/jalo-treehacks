@@ -17,7 +17,11 @@ export default function Header({
             arrow_back
           </i>
         )}
-        {userImg && <img src={userImg} alt="profile-pic" />}
+        {userImg && (
+          <a href="/login">
+            <img src={userImg} alt="profile-pic" />
+          </a>
+        )}
       </div>
       <div>
         {showIcon && <img src={jaloBlack} alt="" style={{ height: "48px" }} />}

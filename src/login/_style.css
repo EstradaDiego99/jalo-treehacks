@@ -1,0 +1,17 @@
+main#login {
+  text-align: center;
+  height: 100vh;
+}
+
+.main-logo {
+  width: 50%;
+}
+
+.login-btn {
+  text-align: center;
+}
+
+.login-btn img {
+  width: 90%;
+  margin: 0 auto;
+}
