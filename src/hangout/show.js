@@ -123,7 +123,7 @@ export default function HangoutShow() {
           </div>
           {description && (
             <div className="description mt-4">
-              <label className="font-weight-bold">Descripción</label>
+              <label className="font-weight-bold">Description</label>
               <p className="pl-3">{description}</p>
             </div>
           )}
