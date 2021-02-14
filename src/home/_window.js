@@ -41,7 +41,7 @@ export default function Home() {
       <Header userImg={user.picture.data.url} />
       <main>
         {!!ownHangouts.length && (
-          <section className="mt-2">
+          <section className="pt-2">
             <p className="mb-2">My pending hangouts:</p>
             {ownHangouts.map((h) => (
               <HangoutSummary {...{ hangout: h, ownHangout: true }} />

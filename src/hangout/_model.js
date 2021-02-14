@@ -8,7 +8,6 @@ const Hangout = model(
     place: { type: String, required: true },
     date: { type: Date, required: true },
     description: { type: String, required: false },
-    user: { type: Object, required: true },
   })
 );
 

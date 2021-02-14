@@ -3,7 +3,7 @@ const router = require("express").Router();
 const Hangout = require("./_model");
 
 router.post("/", async (req, res) => {
-  const { title, place, date, description, userID, user } = req.body;
+  const { title, place, date, description, userID } = req.body;
   const errors = {};
   if (!userID) errors.userID = "The user id is required!!";
   if (!title) errors.title = "The title is required";
@@ -18,14 +18,7 @@ router.post("/", async (req, res) => {
     res.status(400).json({ errors });
     return;
   }
-  const newHangout = new Hangout({
-    userID,
-    title,
-    place,
-    date,
-    description,
-    user,
-  });
+  const newHangout = new Hangout({ userID, title, place, date, description });
   await newHangout.save();
   res.json({ newHangout, msg: "Evento creado satisfactoriamente" });
 });
