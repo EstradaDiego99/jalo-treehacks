@@ -34,14 +34,35 @@ export default function HangoutShow() {
     return <></>;
   }
 
-  const { userID, title, place, date, description } = hangout;
-  const ownHangout =
-    loggedUser && hangoutUser && String(userID) === hangoutUser.id;
+  async function markAssistance() {
+    await axios.post(
+      `${backendURL}/hangouts/${hangoutID}/willAssist/${loggedUser.id}`
+    );
+    window.location.reload();
+  }
+
+  async function unmarkAssistance() {
+    await axios.post(
+      `${backendURL}/hangouts/${hangoutID}/wontAssist/${loggedUser.id}`
+    );
+    window.location.reload();
+  }
+
+  const {
+    title,
+    place,
+    date,
+    description,
+    assistants,
+    assistantsArr,
+  } = hangout;
+  const loggedUserAssisting = assistants.indexOf(loggedUser.id) !== -1;
+  const ownHangout = loggedUser && loggedUser.id === hangoutUser.id;
 
   return (
     <>
       <Header backButton={true} />
-      <main className="pt-4">
+      <main className="pt-4 d-flex flex-column">
         <section className="hangout-info">
           <div className="title mb-3">
             <p>{title}</p>
@@ -71,7 +92,19 @@ export default function HangoutShow() {
                 Editar!!
               </a>
             )}
-            {!ownHangout && <button>Jalo!!</button>}
+            {!ownHangout && (
+              <>
+                {loggedUserAssisting ? (
+                  <button className="jalo activated" onClick={unmarkAssistance}>
+                    Jalo!!
+                  </button>
+                ) : (
+                  <button className="jalo" onClick={markAssistance}>
+                    Jalo!!
+                  </button>
+                )}
+              </>
+            )}
           </div>
           {description && (
             <div className="description mt-4">
@@ -80,6 +113,23 @@ export default function HangoutShow() {
             </div>
           )}
         </section>
+
+        <div className="flex-grow-1"></div>
+
+        {assistantsArr.length && (
+          <section className="assistants-container">
+            <label className="m-0">Assistants:</label>
+            {assistantsArr.map((a) => (
+              <div
+                className="assistant d-flex p-1 align-items-center"
+                key={a.id}
+              >
+                <img src={a.picture.data.url} alt="organizer-icon" />
+                <span className="ml-2">{a.name}</span>
+              </div>
+            ))}
+          </section>
+        )}
       </main>
     </>
   );

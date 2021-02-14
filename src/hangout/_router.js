@@ -10,6 +10,15 @@ router.get("/:hangoutID", async (req, res) => {
   const { access_token } = await User.findOne({ id: hangout.userID });
   const userData = await getFacebookUserData(access_token, ["name", "picture"]);
   hangout.user = userData;
+  const { assistants } = hangout;
+  const assistantsArr = [];
+  for (const assistant of assistants) {
+    const { access_token } = await User.findOne({ id: assistant });
+    assistantsArr.push(
+      await getFacebookUserData(access_token, ["name", "picture"])
+    );
+  }
+  hangout.assistantsArr = assistantsArr;
   res.json(hangout);
 });
 
@@ -37,6 +46,21 @@ router.post("/", async (req, res) => {
 router.put("/:hangoutID", async (req, res) => {
   await Hangout.findByIdAndUpdate(req.params.hangoutID, req.body);
   res.json("Hangout successfully updated");
+});
+
+router.post("/:hangoutID/willAssist/:userID", async (req, res) => {
+  const { assistants = [] } = await Hangout.findById(req.params.hangoutID);
+  assistants.push(req.params.userID);
+  await Hangout.findByIdAndUpdate(req.params.hangoutID, { assistants });
+  res.json("User will assist");
+});
+
+router.post("/:hangoutID/wontAssist/:userID", async (req, res) => {
+  const { assistants = [] } = await Hangout.findById(req.params.hangoutID);
+  const idx = assistants.indexOf(req.params.userID);
+  if (idx > -1) assistants.splice(idx, 1);
+  await Hangout.findByIdAndUpdate(req.params.hangoutID, { assistants });
+  res.json("User won't assist anymore");
 });
 
 router.delete("/:hangoutID", async (req, res) => {

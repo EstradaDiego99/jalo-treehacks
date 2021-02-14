@@ -44,7 +44,10 @@ export default function Home() {
           <section className="pt-4">
             <p className="mb-2">My pending hangouts:</p>
             {ownHangouts.map((h) => (
-              <HangoutSummary {...{ hangout: h, ownHangout: true }} />
+              <HangoutSummary
+                {...{ hangout: h, ownHangout: true }}
+                key={h._id}
+              />
             ))}
           </section>
         )}
@@ -53,7 +56,7 @@ export default function Home() {
           <section className="pt-4">
             <p className="mb-2">My friend hangouts:</p>
             {friendHangouts.map((h) => (
-              <HangoutSummary {...{ hangout: h }} />
+              <HangoutSummary {...{ hangout: h }} key={h._id} />
             ))}
           </section>
         )}
