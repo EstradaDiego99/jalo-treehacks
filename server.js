@@ -22,6 +22,9 @@ mongoose
 const signUpRouter = require("./src/signup/_router");
 app.use("/api/signup", signUpRouter);
 
+const hangoutsRouter = require("./src/hangout/_router");
+app.use("/api/hangouts", hangoutsRouter);
+
 // Serve static assets if in production
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "build")));

@@ -38,7 +38,7 @@ router.route("/").post(async (req, res) => {
       access_token,
     },
   });
-  const newUser = new User({ id });
+  const newUser = new User({ id, access_token });
 
   newUser
     .save()

@@ -6,4 +6,11 @@
 
 body {
   background-color: var(--background-pale);
+  height: 100vh;
+  min-height: 100vh;
+  line-height: normal;
+}
+
+main {
+  height: calc(100vh - 56px);
 }

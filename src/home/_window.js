@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "../index.css";
+import "./_style.css";
 import { login } from "../_auth/utils";
 
 import Header from "../_header/_component";
@@ -22,9 +22,15 @@ export default function Home() {
   }
 
   return (
-    <main>
+    <>
       <Header userImg={user.picture.data.url} />
-      <p>{JSON.stringify(user)}</p>
-    </main>
+      <main>
+        <p style={{ overflow: "auto" }}>{JSON.stringify(user)}</p>
+        <a href="/hangout/new" className="btn new-hangout">
+          <span className="flex-grow-1">Propose Hangout</span>
+          <i className="material-icons">create</i>
+        </a>
+      </main>
+    </>
   );
 }
