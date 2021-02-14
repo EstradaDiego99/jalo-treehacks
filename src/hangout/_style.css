@@ -153,6 +153,7 @@ textarea {
   width: 56px;
   height: 56px;
   font-size: 3.5em;
+  opacity: 0.5;
 }
 
 .organizer img {
@@ -162,6 +163,7 @@ textarea {
 
 .jalo {
   width: 64px;
+  cursor: pointer;
 }
 
 .jalo.off {
