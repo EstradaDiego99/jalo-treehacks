@@ -114,3 +114,26 @@ textarea {
 .hangout-summary .event-info {
   padding-left: 4px;
 }
+
+.hangout-info {
+  padding: 8px;
+}
+
+.hangout-info p {
+  margin: 0;
+}
+
+.hangout-info .title {
+  font-size: 1.5em;
+  height: 2em;
+}
+
+.edit-hangout {
+  width: 56px;
+  height: 56px;
+}
+
+.organizer img {
+  width: 40px;
+  border-radius: 50%;
+}

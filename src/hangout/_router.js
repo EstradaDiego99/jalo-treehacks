@@ -1,6 +1,17 @@
 const router = require("express").Router();
 
 const Hangout = require("./_model");
+const User = require("../user/_model");
+const { getFacebookUserData } = require("../_auth/_utils");
+
+router.get("/:hangoutID", async (req, res) => {
+  const hangoutDoc = await Hangout.findById(req.params.hangoutID);
+  const hangout = hangoutDoc.toObject();
+  const { access_token } = await User.findOne({ id: hangout.userID });
+  const userData = await getFacebookUserData(access_token, ["name", "picture"]);
+  hangout.user = userData;
+  res.json(hangout);
+});
 
 router.post("/", async (req, res) => {
   const { title, place, date, description, userID } = req.body;

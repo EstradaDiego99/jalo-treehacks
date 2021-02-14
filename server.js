@@ -25,6 +25,9 @@ app.use("/api/signup", signUpRouter);
 const homeRouter = require("./src/home/_router");
 app.use("/api/home", homeRouter);
 
+const userRouter = require("./src/user/_router");
+app.use("/api/user", userRouter);
+
 const hangoutsRouter = require("./src/hangout/_router");
 app.use("/api/hangouts", hangoutsRouter);
 
