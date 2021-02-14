@@ -29,12 +29,18 @@ export default function ChatIndex() {
           {chats.map((c) => (
             <ChatSummary chat={c} key={c._id} />
           ))}
+
           {chats.length === 0 && (
-            <div>
-              <p>
+            <div className="p-5 text-center text-secondary">
+              <p style={{ fontSize: "1.5em" }}>
                 There appear to be no chats for the moment. Luckily we can
-                change that!! Go on and see what plans your friends might have
-                to join them!! You can also create your own plan too!!
+                change that!!
+                <br />
+                <br />
+                Go on and see what plans your friends might have to join them!!
+                <br />
+                <br />
+                You can also create your own plan too!!
               </p>
             </div>
           )}
